@@ -69,7 +69,7 @@ LGScenarist >> next [
 	self backwardStack
 		push: (self forwardStack pop
 					scenarist: self;
-					run;
+					fullRun;
 					yourself)
 ]
 
@@ -81,7 +81,7 @@ LGScenarist >> previous [
 	self forwardStack
 		push: (self backwardStack pop
 					scenarist: self;
-					revert;
+					fullRevert;
 					yourself)
 ]
 

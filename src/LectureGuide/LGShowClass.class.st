@@ -25,6 +25,14 @@ LGShowClass >> classToShow: anObject [
 	classToShow := anObject
 ]
 
+{ #category : #printing }
+LGShowClass >> printTextualRepresentationOn: aStream [
+	aStream
+		nextPutAll: 'Show class "';
+		nextPutAll: self classToShow;
+		nextPut: $"
+]
+
 { #category : #running }
 LGShowClass >> run [
 	self scenarist showClass: (self class environment at: self classToShow)

@@ -41,6 +41,16 @@ LGShowMethod >> methodSelectorToShow: anObject [
 	methodSelectorToShow := anObject
 ]
 
+{ #category : #printing }
+LGShowMethod >> printTextualRepresentationOn: aStream [
+	aStream
+		nextPutAll: 'Show method "';
+		nextPutAll: self classToShow;
+		nextPutAll: '>>';
+		nextPutAll: self methodSelectorToShow;
+		nextPut: $"
+]
+
 { #category : #running }
 LGShowMethod >> run [
 	| target |

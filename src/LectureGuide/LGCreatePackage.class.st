@@ -24,6 +24,14 @@ LGCreatePackage >> packageName: anObject [
 	packageName := anObject
 ]
 
+{ #category : #printing }
+LGCreatePackage >> printTextualRepresentationOn: aStream [
+	aStream
+		nextPutAll: 'Create package "';
+		nextPutAll: self packageName;
+		nextPut: $"
+]
+
 { #category : #running }
 LGCreatePackage >> revert [
 	(RPackage organizer packageNamed: self packageName) removeFromSystem

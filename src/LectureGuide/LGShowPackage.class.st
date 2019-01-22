@@ -24,6 +24,14 @@ LGShowPackage >> packageName: anObject [
 	packageName := anObject
 ]
 
+{ #category : #printing }
+LGShowPackage >> printTextualRepresentationOn: aStream [
+	aStream
+		nextPutAll: 'Show package "';
+		nextPutAll: self packageName;
+		nextPut: $"
+]
+
 { #category : #running }
 LGShowPackage >> run [
 	self scenarist browser selectPackage: (RPackage organizer packageNamed: self packageName)

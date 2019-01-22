@@ -4,6 +4,12 @@ Class {
 	#category : #'LectureGuide-Entries'
 }
 
+{ #category : #printing }
+LGShowBrowser >> printTextualRepresentationOn: aStream [
+	aStream
+		nextPutAll: 'Show browser'
+]
+
 { #category : #running }
 LGShowBrowser >> revert [
 	self scenarist browserWindow hide

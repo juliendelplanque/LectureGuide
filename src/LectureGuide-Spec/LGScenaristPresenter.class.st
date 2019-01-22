@@ -20,10 +20,12 @@ LGScenaristPresenter class >> defaultSpec [
 { #category : #adapting }
 LGScenaristPresenter >> adaptToLGScenarist: aLGScenarist [
 	self nextButton
-		action: [ aLGScenarist next ].
+		action: [ 
+			[ aLGScenarist next ] on: LGNotification do: [ :notif | UIManager default inform: notif messageText. notif resume ] ].
 		
 	self previousButton
-		action: [ aLGScenarist previous ]
+		action: [ 
+			[ aLGScenarist previous ] on: LGNotification do: [ :notif | UIManager default inform: notif messageText. notif resume ] ]
 ]
 
 { #category : #initialization }

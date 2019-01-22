@@ -49,6 +49,14 @@ LGCreateClass >> package: anObject [
 	package := anObject
 ]
 
+{ #category : #printing }
+LGCreateClass >> printTextualRepresentationOn: aStream [
+	aStream
+		nextPutAll: 'Create class "';
+		nextPutAll: self name;
+		nextPut: $"
+]
+
 { #category : #running }
 LGCreateClass >> revert [
 	(self class environment at: self name) removeFromSystem

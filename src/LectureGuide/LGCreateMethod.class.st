@@ -27,6 +27,16 @@ LGCreateMethod >> isClassSide: anObject [
 	isClassSide := anObject
 ]
 
+{ #category : #printing }
+LGCreateMethod >> printTextualRepresentationOn: aStream [
+	aStream
+		nextPutAll: 'Create method "';
+		nextPutAll: self targetClassName;
+		nextPutAll: '>>';
+		nextPutAll: self selectorOfMethodCreated;
+		nextPut: $"
+]
+
 { #category : #accessing }
 LGCreateMethod >> protocol [
 	^ protocol

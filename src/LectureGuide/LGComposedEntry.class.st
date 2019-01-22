@@ -35,19 +35,19 @@ LGComposedEntry >> entries: anObject [
 ]
 
 { #category : #running }
-LGComposedEntry >> revert [
+LGComposedEntry >> fullRevert [
 	self entries reverseDo: [ :entry |
 		entry
 			scenarist: self scenarist;
-			revert ]
+			fullRevert ]
 ]
 
 { #category : #running }
-LGComposedEntry >> run [
+LGComposedEntry >> fullRun [
 	self entries do: [ :entry |
 		entry
 			scenarist: self scenarist;
-			run ]
+			fullRun ]
 ]
 
 { #category : #'ston persistence' }

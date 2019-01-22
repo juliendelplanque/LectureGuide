@@ -7,6 +7,11 @@ Class {
 	#category : #'LectureGuide-Core'
 }
 
+{ #category : #'ston-core' }
+LGEntry class >> stonAllInstVarNames [
+	^ self allInstVarNames \ #(#scenarist)
+]
+
 { #category : #arithmetic }
 LGEntry >> + aLGEntry [
 	^ LGComposedEntry new

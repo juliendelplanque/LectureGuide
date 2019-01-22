@@ -7,6 +7,17 @@ Class {
 	#category : #'LectureGuide-Core'
 }
 
+{ #category : #'instance creation' }
+LGComposedEntry class >> fromSton: stonReader [
+	| array |
+	array := Array streamContents: [ :stream |
+		stonReader parseListDo: [ :each :index | stream nextPut: each ] ].
+	
+	^ self new
+		entries: array;
+		yourself
+]
+
 { #category : #arithmetic }
 LGComposedEntry >> + aLGEntry [
 	self entries add: aLGEntry.
@@ -37,4 +48,11 @@ LGComposedEntry >> run [
 		entry
 			scenarist: self scenarist;
 			run ]
+]
+
+{ #category : #'ston persistence' }
+LGComposedEntry >> stonOn: stonWriter [
+	stonWriter
+		writeObject: self streamList: [ :list |
+			self entries do: [ :e | list add: e ] ]
 ]

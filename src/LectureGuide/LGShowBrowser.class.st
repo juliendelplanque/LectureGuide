@@ -13,3 +13,8 @@ LGShowBrowser >> revert [
 LGShowBrowser >> run [
 	self scenarist browserWindow show
 ]
+
+{ #category : #'ston persistence' }
+LGShowBrowser >> stonContainSubObjects [ 
+	^ false
+]

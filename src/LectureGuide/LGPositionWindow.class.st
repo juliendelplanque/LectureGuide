@@ -1,20 +1,12 @@
 Class {
 	#name : #LGPositionWindow,
-	#superclass : #LGEntry,
+	#superclass : #LGWindowEntry,
 	#instVars : [
 		'newPosition',
-		'oldPosition',
-		'windowSelector'
+		'oldPosition'
 	],
 	#category : #'LectureGuide-Entries'
 }
-
-{ #category : #'instance creation' }
-LGPositionWindow class >> windowSelector: aSymbol [
-	^ self new
-		windowSelector: aSymbol;
-		yourself
-]
 
 { #category : #running }
 LGPositionWindow >> basicRevert [
@@ -28,9 +20,19 @@ LGPositionWindow >> basicRun [
 	self window center: self newPosition
 ]
 
-{ #category : #accessing }
+{ #category : #'symbolic positions' }
 LGPositionWindow >> center [
 	self newPosition: [ self scenarist displayExtent / 2 ]
+]
+
+{ #category : #accessing }
+LGPositionWindow >> downLeft [
+	self newPosition: [ (self window extent / 2) + (0 @ self scenarist displayExtent y / 2)]
+]
+
+{ #category : #accessing }
+LGPositionWindow >> downRight [
+	self newPosition: [ (self window extent / 2) + ((self scenarist displayExtent x) @ self scenarist displayExtent y / 2)]
 ]
 
 { #category : #accessing }
@@ -53,17 +55,7 @@ LGPositionWindow >> topLeft [
 	self newPosition: [ self window extent / 2 ]
 ]
 
-{ #category : #running }
-LGPositionWindow >> window [
-	^ self windowSelector value: self scenarist
-]
-
 { #category : #accessing }
-LGPositionWindow >> windowSelector [
-	^ windowSelector
-]
-
-{ #category : #accessing }
-LGPositionWindow >> windowSelector: aSymbol [
-	windowSelector := aSymbol
+LGPositionWindow >> topRight [
+	self newPosition: [ (self window extent / 2) + (self scenarist displayExtent x / 2 @ 0)]
 ]

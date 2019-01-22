@@ -27,12 +27,20 @@ LGCreateMethod >> isClassSide: anObject [
 
 { #category : #running }
 LGCreateMethod >> revert [
-	((self class environment at: self targetClassName) >> self selectorOfMethodCreated) removeFromSystem
+	| target |
+	target := self class environment at: self targetClassName.
+	self isClassSide
+		ifTrue: [ target := target class ].
+	(target >> self selectorOfMethodCreated) removeFromSystem
 ]
 
 { #category : #running }
 LGCreateMethod >> run [
-	(self class environment at: self targetClassName) compile: self sourceCode
+	| target |
+	target := self class environment at: self targetClassName.
+	self isClassSide
+		ifTrue: [ target := target class ].
+	target compile: self sourceCode
 ]
 
 { #category : #running }
@@ -63,5 +71,8 @@ LGCreateMethod >> targetClassName: anObject [
 { #category : #composition }
 LGCreateMethod >> thenShowIt [
 	"Returns a new composed operator that execute myself and then show the class created."
-	^ self + (LGShowMethod class: self targetClassName methodSelectorToShow: self selectorOfMethodCreated)
+	^ self
+		+ ((LGShowMethod class: self targetClassName methodSelectorToShow: self selectorOfMethodCreated)
+			isClassSide: true;
+			yourself)
 ]

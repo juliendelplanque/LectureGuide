@@ -8,7 +8,7 @@ Class {
 		'classVariables',
 		'package'
 	],
-	#category : #'LectureGuide-Core'
+	#category : #'LectureGuide-Entries'
 }
 
 { #category : #accessing }

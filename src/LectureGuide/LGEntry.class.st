@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'scenarist'
 	],
-	#category : #'LectureGuide-Core'
+	#category : #'LectureGuide-Entries'
 }
 
 { #category : #'ston-core' }

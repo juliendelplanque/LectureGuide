@@ -6,7 +6,7 @@ Class {
 		'sourceCode',
 		'selectorOfMethodCreated'
 	],
-	#category : #'LectureGuide-Core'
+	#category : #'LectureGuide-Entries'
 }
 
 { #category : #running }

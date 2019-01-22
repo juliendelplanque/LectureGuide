@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'methodSelectorToShow'
 	],
-	#category : #'LectureGuide-Core'
+	#category : #'LectureGuide-Entries'
 }
 
 { #category : #'instance creation' }

@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'packageName'
 	],
-	#category : #'LectureGuide-Core'
+	#category : #'LectureGuide-Entries'
 }
 
 { #category : #'instance creation' }

@@ -1,7 +1,7 @@
 Class {
 	#name : #LGShowBrowser,
 	#superclass : #LGEntry,
-	#category : #'LectureGuide-Core'
+	#category : #'LectureGuide-Entries'
 }
 
 { #category : #running }
@@ -12,9 +12,4 @@ LGShowBrowser >> revert [
 { #category : #running }
 LGShowBrowser >> run [
 	self scenarist browserWindow show
-]
-
-{ #category : #'ston persistence' }
-LGShowBrowser >> stonContainSubObjects [ 
-	^ false
 ]

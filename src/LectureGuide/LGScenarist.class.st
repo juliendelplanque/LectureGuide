@@ -49,6 +49,20 @@ LGScenarist >> clean [
 ]
 
 { #category : #accessing }
+LGScenarist >> commenter [
+	^ commenter ifNil: [ 
+		commenter := TextPresenter new
+							enabled: false;
+							openWithSpec;
+							yourself ]
+]
+
+{ #category : #accessing }
+LGScenarist >> commenterWindow [
+	^ self commenter window
+]
+
+{ #category : #accessing }
 LGScenarist >> displayExtent [
 	^ World extent
 ]

@@ -3,22 +3,24 @@ Class {
 	#superclass : #LGEntry,
 	#instVars : [
 		'targetClassName',
-		'sourceCode',
-		'selectorOfMethodCreated'
+		'sourceCode'
 	],
 	#category : #'LectureGuide-Entries'
 }
 
 { #category : #running }
 LGCreateMethod >> revert [
-	((self class environment at: self targetClassName) >> selectorOfMethodCreated) removeFromSystem.
-	selectorOfMethodCreated := nil
+	((self class environment at: self targetClassName) >> self selectorOfMethodCreated) removeFromSystem
 ]
 
 { #category : #running }
 LGCreateMethod >> run [
-	selectorOfMethodCreated := (self class environment at: self targetClassName)
-							compile: self sourceCode
+	(self class environment at: self targetClassName) compile: self sourceCode
+]
+
+{ #category : #running }
+LGCreateMethod >> selectorOfMethodCreated [
+	^ (Smalltalk compiler compile: self sourceCode) selector
 ]
 
 { #category : #accessing }

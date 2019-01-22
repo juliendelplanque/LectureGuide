@@ -3,10 +3,27 @@ Class {
 	#superclass : #LGEntry,
 	#instVars : [
 		'targetClassName',
-		'sourceCode'
+		'sourceCode',
+		'isClassSide'
 	],
 	#category : #'LectureGuide-Entries'
 }
+
+{ #category : #initialization }
+LGCreateMethod >> initialize [
+	super initialize.
+	self isClassSide: false
+]
+
+{ #category : #accessing }
+LGCreateMethod >> isClassSide [
+	^ isClassSide
+]
+
+{ #category : #accessing }
+LGCreateMethod >> isClassSide: anObject [
+	isClassSide := anObject
+]
 
 { #category : #running }
 LGCreateMethod >> revert [

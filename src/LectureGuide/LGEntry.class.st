@@ -15,7 +15,7 @@ LGEntry class >> stonAllInstVarNames [
 { #category : #arithmetic }
 LGEntry >> + aLGEntry [
 	^ LGComposedEntry new
-		entries: { self . aLGEntry };
+		entries: { self . aLGEntry } asOrderedCollection;
 		yourself
 ]
 

@@ -73,6 +73,6 @@ LGCreateMethod >> thenShowIt [
 	"Returns a new composed operator that execute myself and then show the class created."
 	^ self
 		+ ((LGShowMethod class: self targetClassName methodSelectorToShow: self selectorOfMethodCreated)
-			isClassSide: true;
+			isClassSide: self isClassSide;
 			yourself)
 ]

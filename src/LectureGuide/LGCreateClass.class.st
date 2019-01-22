@@ -82,3 +82,9 @@ LGCreateClass >> superClass [
 LGCreateClass >> superClass: anObject [
 	superClass := anObject
 ]
+
+{ #category : #composition }
+LGCreateClass >> thenShowIt [
+	"Returns a new composed operator that execute myself and then show the class created."
+	^ self + (LGShowClass classToShow: self name)
+]

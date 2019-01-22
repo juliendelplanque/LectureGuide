@@ -42,3 +42,9 @@ LGCreateMethod >> targetClassName [
 LGCreateMethod >> targetClassName: anObject [
 	targetClassName := anObject
 ]
+
+{ #category : #composition }
+LGCreateMethod >> thenShowIt [
+	"Returns a new composed operator that execute myself and then show the class created."
+	^ self + (LGShowMethod class: self targetClassName methodSelectorToShow: self selectorOfMethodCreated)
+]

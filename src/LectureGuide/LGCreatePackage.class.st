@@ -33,3 +33,9 @@ LGCreatePackage >> revert [
 LGCreatePackage >> run [
 	(RPackage named: self packageName) register
 ]
+
+{ #category : #composition }
+LGCreatePackage >> thenShowIt [
+	"Returns a new composed operator that execute myself and then show the class created."
+	^ self + (LGShowPackage packageNamed: self packageName)
+]

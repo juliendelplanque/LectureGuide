@@ -7,7 +7,8 @@ Class {
 		'forwardStack',
 		'backwardStack',
 		'browser',
-		'playground'
+		'playground',
+		'commenter'
 	],
 	#category : #'LectureGuide-Core'
 }
@@ -45,6 +46,11 @@ LGScenarist >> browserWindow [
 LGScenarist >> clean [
 	self browser close.
 	self playgroundWindow close
+]
+
+{ #category : #accessing }
+LGScenarist >> displayExtent [
+	^ World extent
 ]
 
 { #category : #private }

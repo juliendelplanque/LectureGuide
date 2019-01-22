@@ -6,7 +6,8 @@ Class {
 		'currentEntry',
 		'forwardStack',
 		'backwardStack',
-		'browser'
+		'browser',
+		'playground'
 	],
 	#category : #'LectureGuide-Core'
 }
@@ -42,7 +43,8 @@ LGScenarist >> browserWindow [
 
 { #category : #cleaning }
 LGScenarist >> clean [
-	self browser close
+	self browser close.
+	self playgroundWindow close
 ]
 
 { #category : #private }
@@ -63,6 +65,11 @@ LGScenarist >> hasPreviousEntry [
 { #category : #'browser interactions' }
 LGScenarist >> hideBrowser [
 	self browserWindow hide
+]
+
+{ #category : #'playground interactions' }
+LGScenarist >> hidePlayground [
+	^ self playgroundWindow hide
 ]
 
 { #category : #initialization }
@@ -87,6 +94,21 @@ LGScenarist >> next [
 					scenarist: self;
 					run;
 					yourself)
+]
+
+{ #category : #accessing }
+LGScenarist >> playground [
+	^ playground ifNil: [ playground := Smalltalk tools workspace open model ]
+]
+
+{ #category : #'playground interactions' }
+LGScenarist >> playgroundContent [
+	^ self playground codePresentation text
+]
+
+{ #category : #accessing }
+LGScenarist >> playgroundWindow [
+	^ self playground window
 ]
 
 { #category : #api }
@@ -116,6 +138,11 @@ LGScenarist >> setForwardStackFromScenario [
 	forwardStack := Stack newFrom: scenario entries
 ]
 
+{ #category : #'playground interactions' }
+LGScenarist >> setPlaygroundContent: aString [
+	self playground acceptContents: aString
+]
+
 { #category : #'browser interactions' }
 LGScenarist >> showBrowser [
 	self browserWindow show
@@ -129,6 +156,11 @@ LGScenarist >> showClass: aClass [
 { #category : #'browser interactions' }
 LGScenarist >> showMethod: aCompiledMethod [
 	self browser selectMethod: aCompiledMethod
+]
+
+{ #category : #'playground interactions' }
+LGScenarist >> showPlayground [
+	^ self playgroundWindow show
 ]
 
 { #category : #api }

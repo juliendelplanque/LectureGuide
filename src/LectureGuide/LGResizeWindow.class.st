@@ -30,6 +30,11 @@ LGResizeWindow >> newExtent: anObject [
 	newExtent := anObject
 ]
 
+{ #category : #printing }
+LGResizeWindow >> printTextualRepresentationOn: aStream [
+	aStream nextPutAll: 'Resize window'
+]
+
 { #category : #'symbolic extents' }
 LGResizeWindow >> quarterOfDisplay [
 	self newExtent: [ self scenarist displayExtent / 2 ]

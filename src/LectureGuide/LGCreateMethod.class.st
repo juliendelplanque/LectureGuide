@@ -3,6 +3,7 @@ Class {
 	#superclass : #LGEntry,
 	#instVars : [
 		'targetClassName',
+		'protocol',
 		'sourceCode',
 		'isClassSide'
 	],
@@ -12,7 +13,8 @@ Class {
 { #category : #initialization }
 LGCreateMethod >> initialize [
 	super initialize.
-	self isClassSide: false
+	self isClassSide: false.
+	self protocol: 'as yet unclassified'
 ]
 
 { #category : #accessing }
@@ -23,6 +25,16 @@ LGCreateMethod >> isClassSide [
 { #category : #accessing }
 LGCreateMethod >> isClassSide: anObject [
 	isClassSide := anObject
+]
+
+{ #category : #accessing }
+LGCreateMethod >> protocol [
+	^ protocol
+]
+
+{ #category : #accessing }
+LGCreateMethod >> protocol: anObject [
+	protocol := anObject
 ]
 
 { #category : #running }

@@ -6,5 +6,6 @@ CompiledMethod >> asLGCreateMethod [
 		targetClassName: self methodClass instanceSide name;
 		isClassSide: self methodClass isClassSide;
 		sourceCode: self sourceCode;
+		protocol: self protocol;
 		yourself
 ]

@@ -20,6 +20,16 @@ LGResizeWindow >> basicRun [
 	self window extent: self newExtent
 ]
 
+{ #category : #'symbolic extents' }
+LGResizeWindow >> halfOfDisplayHeight [
+	self newExtent: [ self scenarist displayExtent x @ (self scenarist displayExtent y / 2) ]
+]
+
+{ #category : #'symbolic extents' }
+LGResizeWindow >> halfOfDisplayWidth [
+	self newExtent: [ (self scenarist displayExtent x / 2) @ self scenarist displayExtent y ]
+]
+
 { #category : #accessing }
 LGResizeWindow >> newExtent [
 	^ newExtent value

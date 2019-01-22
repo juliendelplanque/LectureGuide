@@ -15,6 +15,17 @@ LGShowMethod class >> class: aSymbol methodSelectorToShow: selector [
 			yourself
 ]
 
+{ #category : #running }
+LGShowMethod >> basicRun [
+	| target |
+	target := self class environment at: self classToShow.
+	self isClassSide
+		ifTrue: [ target := target class ].
+	self scenarist
+		showMethod:
+			target >> self methodSelectorToShow
+]
+
 { #category : #initialization }
 LGShowMethod >> initialize [
 	super initialize.
@@ -49,15 +60,4 @@ LGShowMethod >> printTextualRepresentationOn: aStream [
 		nextPutAll: '>>';
 		nextPutAll: self methodSelectorToShow;
 		nextPut: $"
-]
-
-{ #category : #running }
-LGShowMethod >> run [
-	| target |
-	target := self class environment at: self classToShow.
-	self isClassSide
-		ifTrue: [ target := target class ].
-	self scenarist
-		showMethod:
-			target >> self methodSelectorToShow
 ]

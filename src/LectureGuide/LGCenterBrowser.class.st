@@ -7,19 +7,19 @@ Class {
 	#category : #'LectureGuide-Entries'
 }
 
-{ #category : #printing }
-LGCenterBrowser >> printTextualRepresentationOn: aStream [
-	aStream nextPutAll: 'Center browser'
-]
-
 { #category : #running }
-LGCenterBrowser >> revert [
+LGCenterBrowser >> basicRevert [
 	self scenarist browserWindow position: oldPosition.
 	oldPosition := nil
 ]
 
 { #category : #running }
-LGCenterBrowser >> run [
+LGCenterBrowser >> basicRun [
 	oldPosition := self scenarist browserWindow position.
 	self scenarist browserWindow center: World center.
+]
+
+{ #category : #printing }
+LGCenterBrowser >> printTextualRepresentationOn: aStream [
+	aStream nextPutAll: 'Center browser'
 ]

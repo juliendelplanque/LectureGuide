@@ -25,7 +25,10 @@ LGScenaristPresenter >> adaptToLGScenarist: aLGScenarist [
 		
 	self previousButton
 		action: [ 
-			[ aLGScenarist previous ] on: LGNotification do: [ :notif | UIManager default inform: notif messageText. notif resume ] ]
+			[ aLGScenarist previous ] on: LGNotification do: [ :notif | UIManager default inform: notif messageText. notif resume ] ].
+
+	self window
+		whenClosedDo: [ aLGScenarist clean ]
 ]
 
 { #category : #initialization }

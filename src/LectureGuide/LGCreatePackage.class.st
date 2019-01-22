@@ -14,6 +14,16 @@ LGCreatePackage class >> packageNamed: aString [
 		yourself
 ]
 
+{ #category : #running }
+LGCreatePackage >> basicRevert [
+	(RPackage organizer packageNamed: self packageName) removeFromSystem
+]
+
+{ #category : #running }
+LGCreatePackage >> basicRun [
+	(RPackage named: self packageName) register
+]
+
 { #category : #accessing }
 LGCreatePackage >> packageName [
 	^ packageName
@@ -30,16 +40,6 @@ LGCreatePackage >> printTextualRepresentationOn: aStream [
 		nextPutAll: 'Create package "';
 		nextPutAll: self packageName;
 		nextPut: $"
-]
-
-{ #category : #running }
-LGCreatePackage >> revert [
-	(RPackage organizer packageNamed: self packageName) removeFromSystem
-]
-
-{ #category : #running }
-LGCreatePackage >> run [
-	(RPackage named: self packageName) register
 ]
 
 { #category : #composition }

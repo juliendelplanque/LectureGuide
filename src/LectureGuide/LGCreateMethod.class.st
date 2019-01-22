@@ -10,6 +10,24 @@ Class {
 	#category : #'LectureGuide-Entries'
 }
 
+{ #category : #running }
+LGCreateMethod >> basicRevert [
+	| target |
+	target := self class environment at: self targetClassName.
+	self isClassSide
+		ifTrue: [ target := target class ].
+	(target >> self selectorOfMethodCreated) removeFromSystem
+]
+
+{ #category : #running }
+LGCreateMethod >> basicRun [
+	| target |
+	target := self class environment at: self targetClassName.
+	self isClassSide
+		ifTrue: [ target := target class ].
+	target compile: self sourceCode
+]
+
 { #category : #initialization }
 LGCreateMethod >> initialize [
 	super initialize.
@@ -45,24 +63,6 @@ LGCreateMethod >> protocol [
 { #category : #accessing }
 LGCreateMethod >> protocol: anObject [
 	protocol := anObject
-]
-
-{ #category : #running }
-LGCreateMethod >> revert [
-	| target |
-	target := self class environment at: self targetClassName.
-	self isClassSide
-		ifTrue: [ target := target class ].
-	(target >> self selectorOfMethodCreated) removeFromSystem
-]
-
-{ #category : #running }
-LGCreateMethod >> run [
-	| target |
-	target := self class environment at: self targetClassName.
-	self isClassSide
-		ifTrue: [ target := target class ].
-	target compile: self sourceCode
 ]
 
 { #category : #running }

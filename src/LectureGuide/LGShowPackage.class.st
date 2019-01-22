@@ -14,6 +14,11 @@ LGShowPackage class >> packageNamed: aString [
 		yourself
 ]
 
+{ #category : #running }
+LGShowPackage >> basicRun [
+	self scenarist browser selectPackage: (RPackage organizer packageNamed: self packageName)
+]
+
 { #category : #accessing }
 LGShowPackage >> packageName [
 	^ packageName
@@ -30,9 +35,4 @@ LGShowPackage >> printTextualRepresentationOn: aStream [
 		nextPutAll: 'Show package "';
 		nextPutAll: self packageName;
 		nextPut: $"
-]
-
-{ #category : #running }
-LGShowPackage >> run [
-	self scenarist browser selectPackage: (RPackage organizer packageNamed: self packageName)
 ]

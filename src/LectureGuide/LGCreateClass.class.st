@@ -11,6 +11,20 @@ Class {
 	#category : #'LectureGuide-Entries'
 }
 
+{ #category : #running }
+LGCreateClass >> basicRevert [
+	(self class environment at: self name) removeFromSystem
+]
+
+{ #category : #running }
+LGCreateClass >> basicRun [
+	(self class environment at: self superClass)
+		subclass: self name
+		slots: self slots
+		classVariables: self classVariables
+		package: self package
+]
+
 { #category : #accessing }
 LGCreateClass >> classVariables [
 	^ classVariables
@@ -55,20 +69,6 @@ LGCreateClass >> printTextualRepresentationOn: aStream [
 		nextPutAll: 'Create class "';
 		nextPutAll: self name;
 		nextPut: $"
-]
-
-{ #category : #running }
-LGCreateClass >> revert [
-	(self class environment at: self name) removeFromSystem
-]
-
-{ #category : #running }
-LGCreateClass >> run [
-	(self class environment at: self superClass)
-		subclass: self name
-		slots: self slots
-		classVariables: self classVariables
-		package: self package
 ]
 
 { #category : #accessing }

@@ -19,6 +19,12 @@ LGScenarist class >> read: aLGScenario [
 		yourself
 ]
 
+{ #category : #api }
+LGScenarist >> backToFirstEntry [
+	[ self hasPreviousEntry ]
+		whileFalse: [ self previous ]
+]
+
 { #category : #private }
 LGScenarist >> backwardStack [
 	^ backwardStack
@@ -34,19 +40,29 @@ LGScenarist >> browserWindow [
 	^ self browser window
 ]
 
+{ #category : #cleaning }
+LGScenarist >> clean [
+	self browser close
+]
+
 { #category : #private }
 LGScenarist >> forwardStack [
 	^ forwardStack
 ]
 
 { #category : #testing }
-LGScenarist >> hasLastEntryRun [
-	^ self backwardStack isNotEmpty
+LGScenarist >> hasNextEntry [
+	^ self forwardStack isNotEmpty
 ]
 
 { #category : #testing }
-LGScenarist >> hasNextEntry [
-	^ self forwardStack isNotEmpty
+LGScenarist >> hasPreviousEntry [
+	^ self backwardStack isNotEmpty
+]
+
+{ #category : #'browser interactions' }
+LGScenarist >> hideBrowser [
+	self browserWindow hide
 ]
 
 { #category : #initialization }
@@ -69,19 +85,19 @@ LGScenarist >> next [
 	self backwardStack
 		push: (self forwardStack pop
 					scenarist: self;
-					fullRun;
+					run;
 					yourself)
 ]
 
 { #category : #api }
 LGScenarist >> previous [
-	self hasLastEntryRun
+	self hasPreviousEntry
 		ifFalse: [ LGNoPreviousEntry signal ].
 		
 	self forwardStack
 		push: (self backwardStack pop
 					scenarist: self;
-					fullRevert;
+					revert;
 					yourself)
 ]
 
@@ -101,6 +117,11 @@ LGScenarist >> setForwardStackFromScenario [
 ]
 
 { #category : #'browser interactions' }
+LGScenarist >> showBrowser [
+	self browserWindow show
+]
+
+{ #category : #'browser interactions' }
 LGScenarist >> showClass: aClass [
 	self browser selectClass: aClass
 ]
@@ -108,4 +129,10 @@ LGScenarist >> showClass: aClass [
 { #category : #'browser interactions' }
 LGScenarist >> showMethod: aCompiledMethod [
 	self browser selectMethod: aCompiledMethod
+]
+
+{ #category : #api }
+LGScenarist >> upToLastEntry [
+	[ self hasNextEntry ]
+		whileFalse: [ self next ]
 ]

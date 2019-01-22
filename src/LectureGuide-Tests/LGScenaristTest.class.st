@@ -87,7 +87,7 @@ LGScenaristTest >> testPrevious [
 { #category : #tests }
 LGScenaristTest >> testRead [
 	self assert: scenarist scenario equals: scenario.
-	self deny: scenarist hasLastEntryRun isNil.
+	self deny: scenarist hasPreviousEntry.
 	self assert: scenarist backwardStack isEmpty.
 	self assert: scenarist forwardStack size equals: scenario size.
 	self assert: scenarist hasNextEntry

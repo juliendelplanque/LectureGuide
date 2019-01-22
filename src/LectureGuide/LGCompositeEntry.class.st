@@ -1,5 +1,5 @@
 Class {
-	#name : #LGComposedEntry,
+	#name : #LGCompositeEntry,
 	#superclass : #LGEntry,
 	#instVars : [
 		'entries'
@@ -8,7 +8,7 @@ Class {
 }
 
 { #category : #'instance creation' }
-LGComposedEntry class >> fromSton: stonReader [
+LGCompositeEntry class >> fromSton: stonReader [
 	| array |
 	array := Array streamContents: [ :stream |
 		stonReader parseListDo: [ :each :index | stream nextPut: each ] ].
@@ -19,39 +19,39 @@ LGComposedEntry class >> fromSton: stonReader [
 ]
 
 { #category : #arithmetic }
-LGComposedEntry >> + aLGEntry [
+LGCompositeEntry >> + aLGEntry [
 	self entries add: aLGEntry.
 	^ self
 ]
 
 { #category : #accessing }
-LGComposedEntry >> entries [
+LGCompositeEntry >> entries [
 	^ entries
 ]
 
 { #category : #accessing }
-LGComposedEntry >> entries: anObject [
+LGCompositeEntry >> entries: anObject [
 	entries := anObject
 ]
 
 { #category : #running }
-LGComposedEntry >> fullRevert [
+LGCompositeEntry >> revert [
 	self entries reverseDo: [ :entry |
 		entry
 			scenarist: self scenarist;
-			fullRevert ]
+			revert ]
 ]
 
 { #category : #running }
-LGComposedEntry >> fullRun [
+LGCompositeEntry >> run [
 	self entries do: [ :entry |
 		entry
 			scenarist: self scenarist;
-			fullRun ]
+			run ]
 ]
 
 { #category : #'ston persistence' }
-LGComposedEntry >> stonOn: stonWriter [
+LGCompositeEntry >> stonOn: stonWriter [
 	stonWriter
 		writeObject: self streamList: [ :list |
 			self entries do: [ :e | list add: e ] ]

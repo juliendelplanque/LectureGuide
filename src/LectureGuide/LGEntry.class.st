@@ -14,31 +14,19 @@ LGEntry class >> stonAllInstVarNames [
 
 { #category : #arithmetic }
 LGEntry >> + aLGEntry [
-	^ LGComposedEntry new
+	^ LGCompositeEntry new
 		entries: { self . aLGEntry } asOrderedCollection;
 		yourself
 ]
 
 { #category : #running }
-LGEntry >> fullRevert [
-	"Do not override, this method is called by the scenarist."
-	| textualRepresentation |
-	textualRepresentation := self textualRepresentation.
-	textualRepresentation ifNotEmpty: [ 
-		LGNotification signal: 'Revert: ' , textualRepresentation ].
-	
-	self revert
+LGEntry >> basicRevert [
+	"Actions to do in order to undo an entry that has been run."
 ]
 
 { #category : #running }
-LGEntry >> fullRun [
-	"Do not override, this method is called by the scenarist."
-	| textualRepresentation |
-	textualRepresentation := self textualRepresentation.
-	textualRepresentation ifNotEmpty: [
-		LGNotification signal: 'Run: ' , textualRepresentation ].
-	
-	self run
+LGEntry >> basicRun [
+	"Actions to do when the entry is run."
 ]
 
 { #category : #printing }
@@ -56,12 +44,24 @@ LGEntry >> printTextualRepresentationOn: aStream [
 
 { #category : #running }
 LGEntry >> revert [
-	"Actions to do in order to undo an entry that has been run."
+	"Do not override, this method is called by the scenarist."
+	| textualRepresentation |
+	textualRepresentation := self textualRepresentation.
+	textualRepresentation ifNotEmpty: [ 
+		LGNotification signal: 'Revert: ' , textualRepresentation ].
+	
+	self basicRevert
 ]
 
 { #category : #running }
 LGEntry >> run [
-	"Actions to do when the entry is run."
+	"Do not override, this method is called by the scenarist."
+	| textualRepresentation |
+	textualRepresentation := self textualRepresentation.
+	textualRepresentation ifNotEmpty: [
+		LGNotification signal: 'Run: ' , textualRepresentation ].
+	
+	self basicRun
 ]
 
 { #category : #accessing }

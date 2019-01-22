@@ -15,6 +15,11 @@ LGShowClass class >> classToShow: aSymbol [
 		yourself
 ]
 
+{ #category : #running }
+LGShowClass >> basicRun [
+	self scenarist showClass: (self class environment at: self classToShow)
+]
+
 { #category : #accessing }
 LGShowClass >> classToShow [
 	^ classToShow
@@ -31,9 +36,4 @@ LGShowClass >> printTextualRepresentationOn: aStream [
 		nextPutAll: 'Show class "';
 		nextPutAll: self classToShow;
 		nextPut: $"
-]
-
-{ #category : #running }
-LGShowClass >> run [
-	self scenarist showClass: (self class environment at: self classToShow)
 ]

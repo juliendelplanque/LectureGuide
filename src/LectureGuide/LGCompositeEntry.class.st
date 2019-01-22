@@ -24,6 +24,20 @@ LGCompositeEntry >> + aLGEntry [
 	^ self
 ]
 
+{ #category : #composing }
+LGCompositeEntry >> downLeft [
+	self assert: self entries last class = LGResizeWindow.
+	
+	^ self + (LGPositionWindow windowSelector: self entries last windowSelector) downLeft
+]
+
+{ #category : #composing }
+LGCompositeEntry >> downRight [
+	self assert: self entries last class = LGResizeWindow.
+	
+	^ self + (LGPositionWindow windowSelector: self entries last windowSelector) downRight
+]
+
 { #category : #accessing }
 LGCompositeEntry >> entries [
 	^ entries
@@ -55,4 +69,18 @@ LGCompositeEntry >> stonOn: stonWriter [
 	stonWriter
 		writeObject: self streamList: [ :list |
 			self entries do: [ :e | list add: e ] ]
+]
+
+{ #category : #composing }
+LGCompositeEntry >> topLeft [
+	self assert: self entries last class = LGResizeWindow.
+	
+	^ self + (LGPositionWindow windowSelector: self entries last windowSelector) topLeft
+]
+
+{ #category : #composing }
+LGCompositeEntry >> topRight [
+	self assert: self entries last class = LGResizeWindow.
+	
+	^ self + (LGPositionWindow windowSelector: self entries last windowSelector) topRight
 ]

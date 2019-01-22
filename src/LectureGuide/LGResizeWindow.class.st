@@ -20,6 +20,16 @@ LGResizeWindow >> basicRun [
 	self window extent: self newExtent
 ]
 
+{ #category : #composing }
+LGResizeWindow >> downLeft [
+	^ self +  (LGPositionWindow windowSelector: self windowSelector) downLeft
+]
+
+{ #category : #composing }
+LGResizeWindow >> downRight [
+	^ self +  (LGPositionWindow windowSelector: self windowSelector) downRight
+]
+
 { #category : #'symbolic extents' }
 LGResizeWindow >> halfOfDisplayHeight [
 	self newExtent: [ self scenarist displayExtent x @ (self scenarist displayExtent y / 2) ]
@@ -48,4 +58,14 @@ LGResizeWindow >> printTextualRepresentationOn: aStream [
 { #category : #'symbolic extents' }
 LGResizeWindow >> quarterOfDisplay [
 	self newExtent: [ self scenarist displayExtent / 2 ]
+]
+
+{ #category : #composing }
+LGResizeWindow >> topLeft [
+	^ self +  (LGPositionWindow windowSelector: self windowSelector) topLeft
+]
+
+{ #category : #composing }
+LGResizeWindow >> topRight [
+	^ self +  (LGPositionWindow windowSelector: self windowSelector) topRight
 ]

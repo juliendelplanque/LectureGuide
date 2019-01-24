@@ -59,7 +59,7 @@ LGScenarist >> commenter [
 
 { #category : #accessing }
 LGScenarist >> commenterWindow [
-	^ self commenter window
+	^ self commenter window widget widget
 ]
 
 { #category : #accessing }
@@ -109,7 +109,7 @@ LGScenarist >> hideBrowser [
 
 { #category : #'commenter interactions' }
 LGScenarist >> hideCommenter [
-	self commenterWindow  widget widget hide
+	self commenterWindow hide
 ]
 
 { #category : #'playground interactions' }
@@ -200,7 +200,7 @@ LGScenarist >> showClass: aClass [
 
 { #category : #'commenter interactions' }
 LGScenarist >> showCommenter [
-	self commenterWindow widget widget show
+	self commenterWindow show
 ]
 
 { #category : #'browser interactions' }

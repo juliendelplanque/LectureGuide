@@ -8,6 +8,21 @@ Class {
 	#category : #'LectureGuide-Entries'
 }
 
+{ #category : #composition }
+LGShowWindowEntry class >> halfOfDisplayHeight [
+	^ self new halfOfDisplayHeight
+]
+
+{ #category : #composition }
+LGShowWindowEntry class >> halfOfDisplayWidth [
+	^ self new halfOfDisplayWidth
+]
+
+{ #category : #composition }
+LGShowWindowEntry class >> quarterOfDisplay [
+	^ self new quarterOfDisplay
+]
+
 { #category : #running }
 LGShowWindowEntry >> basicRevert [
 	self hideWindowSelector value: self scenarist

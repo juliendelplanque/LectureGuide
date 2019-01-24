@@ -5,21 +5,6 @@ Class {
 }
 
 { #category : #composition }
-LGShowPlayground class >> halfOfDisplayHeight [
-	^ self new halfOfDisplayHeight
-]
-
-{ #category : #composition }
-LGShowPlayground class >> halfOfDisplayWidth [
-	^ self new halfOfDisplayWidth
-]
-
-{ #category : #composition }
-LGShowPlayground class >> quarterOfDisplay [
-	^ self new quarterOfDisplay
-]
-
-{ #category : #composition }
 LGShowPlayground class >> thenSetContent: aString [
 	^ self new thenSetContent: aString
 ]

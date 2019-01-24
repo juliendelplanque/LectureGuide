@@ -25,7 +25,8 @@ LGCreateMethod >> basicRun [
 	target := self class environment at: self targetClassName.
 	self isClassSide
 		ifTrue: [ target := target class ].
-	target compile: self sourceCode
+	(target compile: self sourceCode)
+		protocol: self protocol
 ]
 
 { #category : #initialization }

@@ -1,22 +1,35 @@
 Class {
 	#name : #LGShowPlayground,
-	#superclass : #LGEntry,
+	#superclass : #LGShowWindowEntry,
 	#category : #'LectureGuide-Entries'
 }
+
+{ #category : #composition }
+LGShowPlayground class >> halfOfDisplayHeight [
+	^ self new halfOfDisplayHeight
+]
+
+{ #category : #composition }
+LGShowPlayground class >> halfOfDisplayWidth [
+	^ self new halfOfDisplayWidth
+]
+
+{ #category : #composition }
+LGShowPlayground class >> quarterOfDisplay [
+	^ self new quarterOfDisplay
+]
 
 { #category : #composition }
 LGShowPlayground class >> thenSetContent: aString [
 	^ self new thenSetContent: aString
 ]
 
-{ #category : #running }
-LGShowPlayground >> basicRevert [
-	self scenarist playgroundWindow hide
-]
-
-{ #category : #running }
-LGShowPlayground >> basicRun [
-	self scenarist playgroundWindow show
+{ #category : #initialization }
+LGShowPlayground >> initialize [
+	super initialize.
+	self windowSelector: #playgroundWindow.
+	self showWindowSelector: #showPlayground.
+	self hideWindowSelector: #hidePlayground.
 ]
 
 { #category : #printing }

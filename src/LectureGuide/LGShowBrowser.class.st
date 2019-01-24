@@ -1,51 +1,34 @@
 Class {
 	#name : #LGShowBrowser,
-	#superclass : #LGEntry,
+	#superclass : #LGShowWindowEntry,
 	#category : #'LectureGuide-Entries'
 }
 
-{ #category : #composing }
+{ #category : #composition }
 LGShowBrowser class >> halfOfDisplayHeight [
 	^ self new halfOfDisplayHeight
 ]
 
-{ #category : #composing }
+{ #category : #composition }
 LGShowBrowser class >> halfOfDisplayWidth [
 	^ self new halfOfDisplayWidth
 ]
 
-{ #category : #composing }
+{ #category : #composition }
 LGShowBrowser class >> quarterOfDisplay [
 	^ self new quarterOfDisplay
 ]
 
-{ #category : #running }
-LGShowBrowser >> basicRevert [
-	self scenarist hideBrowser
-]
-
-{ #category : #running }
-LGShowBrowser >> basicRun [
-	self scenarist showBrowser
-]
-
-{ #category : #composing }
-LGShowBrowser >> halfOfDisplayHeight [
-	^ self + (LGResizeWindow windowSelector: #browserWindow) halfOfDisplayHeight
-]
-
-{ #category : #composing }
-LGShowBrowser >> halfOfDisplayWidth [
-	^ self + (LGResizeWindow windowSelector: #browserWindow) halfOfDisplayWidth
+{ #category : #initialization }
+LGShowBrowser >> initialize [
+	super initialize.
+	self windowSelector: #browserWindow.
+	self showWindowSelector: #showBrowser.
+	self hideWindowSelector: #hideBrowser.
 ]
 
 { #category : #printing }
 LGShowBrowser >> printTextualRepresentationOn: aStream [
 	aStream
 		nextPutAll: 'Show browser'
-]
-
-{ #category : #composing }
-LGShowBrowser >> quarterOfDisplay [
-	^ self + (LGResizeWindow windowSelector: #browserWindow) quarterOfDisplay
 ]

@@ -25,15 +25,22 @@ LGCompositeEntry >> + aLGEntry [
 ]
 
 { #category : #composing }
+LGCompositeEntry >> center [
+	self assert: ({ LGResizeWindow } includes: self entries last class).
+	
+	^ self + (LGPositionWindow windowSelector: self entries last windowSelector) center
+]
+
+{ #category : #composing }
 LGCompositeEntry >> downLeft [
-	self assert: self entries last class = LGResizeWindow.
+	self assert: ({ LGResizeWindow } includes: self entries last class).
 	
 	^ self + (LGPositionWindow windowSelector: self entries last windowSelector) downLeft
 ]
 
 { #category : #composing }
 LGCompositeEntry >> downRight [
-	self assert: self entries last class = LGResizeWindow.
+	self assert: ({ LGResizeWindow } includes: self entries last class).
 	
 	^ self + (LGPositionWindow windowSelector: self entries last windowSelector) downRight
 ]
@@ -73,14 +80,14 @@ LGCompositeEntry >> stonOn: stonWriter [
 
 { #category : #composing }
 LGCompositeEntry >> topLeft [
-	self assert: self entries last class = LGResizeWindow.
+	self assert: ({ LGResizeWindow } includes: self entries last class).
 	
 	^ self + (LGPositionWindow windowSelector: self entries last windowSelector) topLeft
 ]
 
 { #category : #composing }
 LGCompositeEntry >> topRight [
-	self assert: self entries last class = LGResizeWindow.
+	self assert: ({ LGResizeWindow } includes: self entries last class).
 	
 	^ self + (LGPositionWindow windowSelector: self entries last windowSelector) topRight
 ]

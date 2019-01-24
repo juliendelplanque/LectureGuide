@@ -63,8 +63,28 @@ LGScenarist >> commenterWindow [
 ]
 
 { #category : #accessing }
+LGScenarist >> displayDownLeftCornerPosition [
+	^ self displayTopLeftCornerPosition + (0 @ self displayExtent y)
+]
+
+{ #category : #accessing }
+LGScenarist >> displayDownRightCornerPosition [
+	^ self displayTopLeftCornerPosition + self displayExtent
+]
+
+{ #category : #accessing }
 LGScenarist >> displayExtent [
 	^ World extent
+]
+
+{ #category : #accessing }
+LGScenarist >> displayTopLeftCornerPosition [
+	^ 0@0
+]
+
+{ #category : #accessing }
+LGScenarist >> displayTopRightCornerPosition [
+	^ self displayTopLeftCornerPosition + (self displayExtent x @ 0)
 ]
 
 { #category : #private }
@@ -85,6 +105,11 @@ LGScenarist >> hasPreviousEntry [
 { #category : #'browser interactions' }
 LGScenarist >> hideBrowser [
 	self browserWindow hide
+]
+
+{ #category : #'commenter interactions' }
+LGScenarist >> hideCommenter [
+	self commenterWindow  widget widget hide
 ]
 
 { #category : #'playground interactions' }
@@ -171,6 +196,11 @@ LGScenarist >> showBrowser [
 { #category : #'browser interactions' }
 LGScenarist >> showClass: aClass [
 	self browser selectClass: aClass
+]
+
+{ #category : #'commenter interactions' }
+LGScenarist >> showCommenter [
+	self commenterWindow widget widget show
 ]
 
 { #category : #'browser interactions' }

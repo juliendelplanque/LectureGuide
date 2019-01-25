@@ -26,23 +26,37 @@ LGCompositeEntry >> + aLGEntry [
 
 { #category : #composing }
 LGCompositeEntry >> center [
-	self assert: ({ LGResizeWindow } includes: self entries last class).
+	self checkLastEntryIsKindOf: LGResizeWindow toComposeWith: LGPositionWindow.
 	
-	^ self + (LGPositionWindow windowSelector: self entries last windowSelector) center
+	^ self + (LGPositionWindow windowSelector: self lastEntry windowSelector) center
+]
+
+{ #category : #checks }
+LGCompositeEntry >> checkLastEntryIsKindOf: aClass toComposeWith: anEntryClass [
+	self checkLastEntryIsKindOfAny: { aClass } toComposeWith: anEntryClass
+]
+
+{ #category : #checks }
+LGCompositeEntry >> checkLastEntryIsKindOfAny: aCollectionOfClasses toComposeWith: anEntryClass [
+	aCollectionOfClasses
+		detect: [ :anyClass | self lastEntry isKindOf: anyClass ]
+		ifNone: [
+			LGNonComposableEntries
+				signalEntry: self lastEntry class canNotBeComposedWith: anEntryClass ]
 ]
 
 { #category : #composing }
 LGCompositeEntry >> downLeft [
-	self assert: ({ LGResizeWindow } includes: self entries last class).
+	self checkLastEntryIsKindOf: LGResizeWindow toComposeWith: LGPositionWindow.
 	
-	^ self + (LGPositionWindow windowSelector: self entries last windowSelector) downLeft
+	^ self + (LGPositionWindow windowSelector: self lastEntry windowSelector) downLeft
 ]
 
 { #category : #composing }
 LGCompositeEntry >> downRight [
-	self assert: ({ LGResizeWindow } includes: self entries last class).
+	self checkLastEntryIsKindOf: LGResizeWindow toComposeWith: LGPositionWindow.
 	
-	^ self + (LGPositionWindow windowSelector: self entries last windowSelector) downRight
+	^ self + (LGPositionWindow windowSelector: self lastEntry windowSelector) downRight
 ]
 
 { #category : #accessing }
@@ -53,6 +67,11 @@ LGCompositeEntry >> entries [
 { #category : #accessing }
 LGCompositeEntry >> entries: anObject [
 	entries := anObject
+]
+
+{ #category : #accessing }
+LGCompositeEntry >> lastEntry [
+	^ self entries last
 ]
 
 { #category : #running }
@@ -80,14 +99,14 @@ LGCompositeEntry >> stonOn: stonWriter [
 
 { #category : #composing }
 LGCompositeEntry >> topLeft [
-	self assert: ({ LGResizeWindow } includes: self entries last class).
+	self checkLastEntryIsKindOf: LGResizeWindow toComposeWith: LGPositionWindow.
 	
-	^ self + (LGPositionWindow windowSelector: self entries last windowSelector) topLeft
+	^ self + (LGPositionWindow windowSelector: self lastEntry windowSelector) topLeft
 ]
 
 { #category : #composing }
 LGCompositeEntry >> topRight [
-	self assert: ({ LGResizeWindow } includes: self entries last class).
+	self checkLastEntryIsKindOf: LGResizeWindow toComposeWith: LGPositionWindow.
 	
-	^ self + (LGPositionWindow windowSelector: self entries last windowSelector) topRight
+	^ self + (LGPositionWindow windowSelector: self lastEntry windowSelector) topRight
 ]

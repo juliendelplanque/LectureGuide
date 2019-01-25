@@ -97,6 +97,17 @@ LGResizeWindowTest >> testHalfOfDisplayWidth [
 ]
 
 { #category : #tests }
+LGResizeWindowTest >> testNewExtent [
+	entry newExtent: 1@1.
+	
+	self assert: entry newExtent equals: 1@1.
+	
+	entry newExtent: [ (1@1) + (1@1) ].
+	
+	self assert: entry newExtent equals: 2@2.
+]
+
+{ #category : #tests }
 LGResizeWindowTest >> testQuarterOfDisplay [
 	self assert: extentSet isNil.
 	self assert: entry oldExtent isNil.

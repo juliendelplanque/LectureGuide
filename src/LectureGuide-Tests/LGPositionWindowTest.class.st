@@ -94,6 +94,17 @@ LGPositionWindowTest >> testDownRight [
 ]
 
 { #category : #tests }
+LGPositionWindowTest >> testNewPosition [
+	entry newPosition: 1@1.
+	
+	self assert: entry newPosition equals: 1@1.
+	
+	entry newPosition: [ (1@1) + (1@1) ].
+	
+	self assert: entry newPosition equals: 2@2.
+]
+
+{ #category : #tests }
 LGPositionWindowTest >> testTopLeft [
 	self assert: positionSet isNil.
 	self assert: entry oldPosition isNil.

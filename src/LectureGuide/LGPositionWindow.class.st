@@ -30,12 +30,12 @@ LGPositionWindow >> center [
 	self newPosition: [ (self scenarist displayExtent / 2) - (self window extent / 2) ]
 ]
 
-{ #category : #composition }
+{ #category : #'symbolic positions' }
 LGPositionWindow >> downLeft [
 	self newPosition: [ self scenarist displayDownLeftCornerPosition - (0 @ self window extent y) ]
 ]
 
-{ #category : #composition }
+{ #category : #'symbolic positions' }
 LGPositionWindow >> downRight [
 	self newPosition: [ self scenarist displayDownRightCornerPosition - self window extent]
 ]
@@ -50,17 +50,22 @@ LGPositionWindow >> newPosition: anObject [
 	newPosition := anObject
 ]
 
+{ #category : #accessing }
+LGPositionWindow >> oldPosition [
+	^ oldPosition
+]
+
 { #category : #printing }
 LGPositionWindow >> printTextualRepresentationOn: aStream [
 	aStream nextPutAll: 'Center window'
 ]
 
-{ #category : #composition }
+{ #category : #'symbolic positions' }
 LGPositionWindow >> topLeft [
 	self newPosition: [ self scenarist displayTopLeftCornerPosition ]
 ]
 
-{ #category : #composition }
+{ #category : #'symbolic positions' }
 LGPositionWindow >> topRight [
 	self newPosition: [ self scenarist displayTopRightCornerPosition - (self window extent x @ 0) ]
 ]

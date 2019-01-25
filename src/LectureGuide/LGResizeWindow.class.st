@@ -55,6 +55,11 @@ LGResizeWindow >> newExtent: anObject [
 	newExtent := anObject
 ]
 
+{ #category : #accessing }
+LGResizeWindow >> oldExtent [
+	^ oldExtent
+]
+
 { #category : #printing }
 LGResizeWindow >> printTextualRepresentationOn: aStream [
 	aStream nextPutAll: 'Resize window'

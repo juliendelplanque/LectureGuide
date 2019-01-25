@@ -7,7 +7,6 @@ Class {
 	#name : #LGShowClass,
 	#superclass : #LGBrowserInteractionEntry,
 	#instVars : [
-		'browser',
 		'classToShow'
 	],
 	#category : #'LectureGuide-Entries'

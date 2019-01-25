@@ -25,7 +25,7 @@ LGShowMethod class >> class: aSymbol methodSelectorToShow: selector [
 { #category : #running }
 LGShowMethod >> basicRun [
 	| target |
-	super basicRun.
+	self saveBrowserState.
 	target := self class environment at: self classToShow.
 	self isClassSide
 		ifTrue: [ target := target class ].

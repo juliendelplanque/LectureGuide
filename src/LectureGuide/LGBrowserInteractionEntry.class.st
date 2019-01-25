@@ -9,12 +9,23 @@ Class {
 
 { #category : #running }
 LGBrowserInteractionEntry >> basicRevert [
-	self scenarist browserState: oldBrowerState.
-	oldBrowerState := nil.
-	super basicRevert.
+	self restoreBrowserState.
+	super basicRevert
 ]
 
 { #category : #running }
 LGBrowserInteractionEntry >> basicRun [
-	oldBrowerState := self scenarist browserState.
+	super basicRun.
+	self saveBrowserState
+]
+
+{ #category : #'browser state' }
+LGBrowserInteractionEntry >> restoreBrowserState [
+	self scenarist browserState: oldBrowerState.
+	oldBrowerState := nil
+]
+
+{ #category : #'browser state' }
+LGBrowserInteractionEntry >> saveBrowserState [
+	oldBrowerState := self scenarist browserState
 ]

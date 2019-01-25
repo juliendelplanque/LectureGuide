@@ -37,6 +37,16 @@ LGScenarist >> browser [
 	^ browser ifNil: [ browser := Smalltalk tools browser open ]
 ]
 
+{ #category : #'browser interactions' }
+LGScenarist >> browserState [
+	^ self browser snapshotState
+]
+
+{ #category : #'browser interactions' }
+LGScenarist >> browserState: browserState [
+	browserState restoreStateOf: self browser
+]
+
 { #category : #accessing }
 LGScenarist >> browserWindow [
 	^ self browser window

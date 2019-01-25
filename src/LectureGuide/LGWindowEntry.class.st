@@ -1,3 +1,8 @@
+"
+I am an abstract entry describing the intent to interact with a window.
+
+The selector of the window with which this entry interact is stored in #windowSelector slot.
+"
 Class {
 	#name : #LGWindowEntry,
 	#superclass : #LGEntry,

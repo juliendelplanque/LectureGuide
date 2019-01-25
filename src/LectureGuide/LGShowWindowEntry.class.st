@@ -1,3 +1,6 @@
+"
+I am an abstract entry describing the intent to show a window.
+"
 Class {
 	#name : #LGShowWindowEntry,
 	#superclass : #LGWindowEntry,

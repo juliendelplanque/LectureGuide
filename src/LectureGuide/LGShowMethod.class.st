@@ -1,3 +1,10 @@
+"
+I am an entry describing the intent to show a Pharo method to the user in the system browser.
+
+The name of the method to show is stored as a Symbol in #methodSelectorToShow slot.
+
+#isClassSide slot allows to specify if the method is located in class side or instance side.
+"
 Class {
 	#name : #LGShowMethod,
 	#superclass : #LGShowClass,

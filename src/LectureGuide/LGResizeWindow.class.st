@@ -1,3 +1,8 @@
+"
+I am an entry describing the intent to resize a window.
+
+The new extent of the window is stored in #newExtent slot.
+"
 Class {
 	#name : #LGResizeWindow,
 	#superclass : #LGWindowEntry,

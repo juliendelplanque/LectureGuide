@@ -1,3 +1,8 @@
+"
+I am an entry describing the intent to show a Pharo class to the user in the system browser.
+
+The name of the class to show is stored as a Symbol in #classToShow slot.
+"
 Class {
 	#name : #LGShowClass,
 	#superclass : #LGEntry,

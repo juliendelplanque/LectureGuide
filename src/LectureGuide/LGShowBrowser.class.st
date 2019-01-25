@@ -1,3 +1,6 @@
+"
+I am an entry describing the intent to show the browser.
+"
 Class {
 	#name : #LGShowBrowser,
 	#superclass : #LGShowWindowEntry,

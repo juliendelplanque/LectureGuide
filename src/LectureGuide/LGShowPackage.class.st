@@ -1,3 +1,8 @@
+"
+I am an entry describing the intent to show a Pharo package to the user in the system browser.
+
+The name of the package to show is stored as a String in #packageName slot.
+"
 Class {
 	#name : #LGShowPackage,
 	#superclass : #LGEntry,

@@ -1,3 +1,8 @@
+"
+I am an entry describing the intent to position a window.
+
+The new position of the window is stored in #newPosition slot.
+"
 Class {
 	#name : #LGPositionWindow,
 	#superclass : #LGWindowEntry,

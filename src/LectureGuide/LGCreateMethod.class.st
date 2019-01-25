@@ -13,11 +13,11 @@ Class {
 { #category : #running }
 LGCreateMethod >> basicRevert [
 	| target |
-	super basicRevert.
 	target := self class environment at: self targetClassName.
 	self isClassSide
 		ifTrue: [ target := target class ].
-	(target >> self selectorOfMethodCreated) removeFromSystem
+	(target >> self selectorOfMethodCreated) removeFromSystem.
+	super basicRevert.
 ]
 
 { #category : #running }

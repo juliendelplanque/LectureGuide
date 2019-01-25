@@ -13,8 +13,8 @@ Class {
 
 { #category : #running }
 LGCreateClass >> basicRevert [
+	(self class environment at: self name) removeFromSystem.
 	super basicRevert.
-	(self class environment at: self name) removeFromSystem
 ]
 
 { #category : #running }

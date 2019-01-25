@@ -15,9 +15,9 @@ Class {
 
 { #category : #running }
 LGPositionWindow >> basicRevert [
-	super basicRevert.
 	self window position: oldPosition.
-	oldPosition := nil
+	oldPosition := nil.
+	super basicRevert.
 ]
 
 { #category : #running }

@@ -21,8 +21,8 @@ LGCreatePackage class >> packageNamed: aString [
 
 { #category : #running }
 LGCreatePackage >> basicRevert [
+	(RPackage organizer packageNamed: self packageName) removeFromSystem.
 	super basicRevert.
-	(RPackage organizer packageNamed: self packageName) removeFromSystem
 ]
 
 { #category : #running }

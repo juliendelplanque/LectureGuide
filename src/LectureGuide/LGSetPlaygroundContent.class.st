@@ -8,6 +8,11 @@ Class {
 	#category : #'LectureGuide-Entries'
 }
 
+{ #category : #'ston-core' }
+LGSetPlaygroundContent class >> stonAllInstVarNames [
+	^ super stonAllInstVarNames \ #(#oldContent)
+]
+
 { #category : #running }
 LGSetPlaygroundContent >> basicRevert [
 	self scenarist setPlaygroundContent: oldContent.

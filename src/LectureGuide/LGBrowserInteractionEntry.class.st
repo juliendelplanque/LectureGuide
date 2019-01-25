@@ -7,6 +7,11 @@ Class {
 	#category : #'LectureGuide-Entries'
 }
 
+{ #category : #'ston-core' }
+LGBrowserInteractionEntry class >> stonAllInstVarNames [
+	^ super stonAllInstVarNames \ #(#oldBrowerState)
+]
+
 { #category : #running }
 LGBrowserInteractionEntry >> basicRevert [
 	self restoreBrowserState.

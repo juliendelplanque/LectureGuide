@@ -28,11 +28,13 @@ LGShowWindowEntry class >> quarterOfDisplay [
 
 { #category : #running }
 LGShowWindowEntry >> basicRevert [
+	super basicRevert.
 	self hideWindowSelector value: self scenarist
 ]
 
 { #category : #running }
 LGShowWindowEntry >> basicRun [
+	super basicRun.
 	self showWindowSelector value: self scenarist
 ]
 

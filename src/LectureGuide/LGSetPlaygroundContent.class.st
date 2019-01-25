@@ -10,12 +10,14 @@ Class {
 
 { #category : #running }
 LGSetPlaygroundContent >> basicRevert [
+	super basicRevert.
 	self scenarist setPlaygroundContent: oldContent.
 	oldContent := nil
 ]
 
 { #category : #running }
 LGSetPlaygroundContent >> basicRun [
+	super basicRun.
 	oldContent := self scenarist playgroundContent.
 	self scenarist setPlaygroundContent: self content
 ]

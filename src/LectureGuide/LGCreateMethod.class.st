@@ -13,6 +13,7 @@ Class {
 { #category : #running }
 LGCreateMethod >> basicRevert [
 	| target |
+	super basicRevert.
 	target := self class environment at: self targetClassName.
 	self isClassSide
 		ifTrue: [ target := target class ].
@@ -22,6 +23,7 @@ LGCreateMethod >> basicRevert [
 { #category : #running }
 LGCreateMethod >> basicRun [
 	| target |
+	super basicRun.
 	target := self class environment at: self targetClassName.
 	self isClassSide
 		ifTrue: [ target := target class ].

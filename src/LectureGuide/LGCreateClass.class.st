@@ -13,11 +13,13 @@ Class {
 
 { #category : #running }
 LGCreateClass >> basicRevert [
+	super basicRevert.
 	(self class environment at: self name) removeFromSystem
 ]
 
 { #category : #running }
 LGCreateClass >> basicRun [
+	super basicRun.
 	(self class environment at: self superClass)
 		subclass: self name
 		slots: self slots

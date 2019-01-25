@@ -15,12 +15,14 @@ Class {
 
 { #category : #running }
 LGResizeWindow >> basicRevert [
+	super basicRevert.
 	self window extent: oldExtent.
 	oldExtent := nil
 ]
 
 { #category : #running }
 LGResizeWindow >> basicRun [
+	super basicRun.
 	oldExtent := self window extent.
 	self window extent: self newExtent
 ]

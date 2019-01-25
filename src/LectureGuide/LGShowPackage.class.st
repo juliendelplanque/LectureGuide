@@ -21,6 +21,7 @@ LGShowPackage class >> packageNamed: aString [
 
 { #category : #running }
 LGShowPackage >> basicRun [
+	super basicRun.
 	self scenarist browser selectPackage: (RPackage organizer packageNamed: self packageName)
 ]
 

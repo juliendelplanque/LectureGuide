@@ -15,12 +15,14 @@ Class {
 
 { #category : #running }
 LGPositionWindow >> basicRevert [
+	super basicRevert.
 	self window position: oldPosition.
 	oldPosition := nil
 ]
 
 { #category : #running }
 LGPositionWindow >> basicRun [
+	super basicRun.
 	oldPosition := self window position.
 	self window position: self newPosition
 ]

@@ -22,6 +22,7 @@ LGShowClass class >> classToShow: aSymbol [
 
 { #category : #running }
 LGShowClass >> basicRun [
+	super basicRun.
 	self scenarist showClass: (self class environment at: self classToShow)
 ]
 

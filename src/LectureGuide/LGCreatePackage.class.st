@@ -21,11 +21,13 @@ LGCreatePackage class >> packageNamed: aString [
 
 { #category : #running }
 LGCreatePackage >> basicRevert [
+	super basicRevert.
 	(RPackage organizer packageNamed: self packageName) removeFromSystem
 ]
 
 { #category : #running }
 LGCreatePackage >> basicRun [
+	super basicRun.
 	(RPackage named: self packageName) register
 ]
 

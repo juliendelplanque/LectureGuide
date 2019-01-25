@@ -8,10 +8,15 @@ Class {
 }
 
 { #category : #'instance creation' }
-LGCreatePackage class >> packageNamed: aString [
+LGCreatePackage class >> named: aString [
 	^ self new
 		packageName: aString;
 		yourself
+]
+
+{ #category : #'instance creation' }
+LGCreatePackage class >> packageNamed: aString [
+	^ self named: aString
 ]
 
 { #category : #running }

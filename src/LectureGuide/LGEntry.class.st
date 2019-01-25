@@ -19,6 +19,16 @@ LGEntry >> + aLGEntry [
 		yourself
 ]
 
+{ #category : #copying }
+LGEntry >> , anObject [
+	| scenario |
+	scenario := LGScenario new
+					addEntry: self;
+					yourself.
+	anObject beAddedTo: scenario.
+	^ scenario
+]
+
 { #category : #running }
 LGEntry >> basicRevert [
 	"Actions to do in order to undo an entry that has been run."
@@ -27,6 +37,12 @@ LGEntry >> basicRevert [
 { #category : #running }
 LGEntry >> basicRun [
 	"Actions to do when the entry is run."
+]
+
+{ #category : #adding }
+LGEntry >> beAddedTo: aLGScenario [
+	"Adds myself to the scenario provided as argument."
+	aLGScenario addEntry: self
 ]
 
 { #category : #printing }

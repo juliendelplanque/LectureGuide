@@ -7,9 +7,21 @@ Class {
 	#category : #'LectureGuide-Core'
 }
 
+{ #category : #sugar }
+LGScenario >> , anObject [
+	anObject beAddedTo: self.
+	^ self
+]
+
 { #category : #adding }
 LGScenario >> addEntry: aLGEntry [
 	self entries add: aLGEntry
+]
+
+{ #category : #adding }
+LGScenario >> beAddedTo: aLGScenario [
+	"Adds all my entries to the scenario provided as argument."
+	self entries do: [ :e | aLGScenario addEntry: e ]
 ]
 
 { #category : #accessing }

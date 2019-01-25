@@ -5,7 +5,7 @@ The name of the class to show is stored as a Symbol in #classToShow slot.
 "
 Class {
 	#name : #LGShowClass,
-	#superclass : #LGEntry,
+	#superclass : #LGBrowserInteractionEntry,
 	#instVars : [
 		'browser',
 		'classToShow'

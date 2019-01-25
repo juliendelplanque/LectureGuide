@@ -5,7 +5,7 @@ The name of the package to show is stored as a String in #packageName slot.
 "
 Class {
 	#name : #LGShowPackage,
-	#superclass : #LGEntry,
+	#superclass : #LGBrowserInteractionEntry,
 	#instVars : [
 		'packageName'
 	],

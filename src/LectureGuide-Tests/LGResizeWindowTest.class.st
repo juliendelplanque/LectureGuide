@@ -37,6 +37,30 @@ LGResizeWindowTest >> setUp [
 ]
 
 { #category : #tests }
+LGResizeWindowTest >> testDownLeft [
+	| composed |
+	composed := entry downLeft.
+	
+	self assert: composed class equals: LGCompositeEntry.
+	self assert: composed entries size equals: 2.
+	self assert: composed entries first equals: entry.
+	self assert: composed entries second class equals: LGPositionWindow.
+	self assert: composed entries second windowSelector equals: entry windowSelector.
+]
+
+{ #category : #tests }
+LGResizeWindowTest >> testDownRight [
+	| composed |
+	composed := entry downRight.
+	
+	self assert: composed class equals: LGCompositeEntry.
+	self assert: composed entries size equals: 2.
+	self assert: composed entries first equals: entry.
+	self assert: composed entries second class equals: LGPositionWindow.
+	self assert: composed entries second windowSelector equals: entry windowSelector.
+]
+
+{ #category : #tests }
 LGResizeWindowTest >> testHalfOfDisplayHeight [
 	self assert: extentSet isNil.
 	self assert: entry oldExtent isNil.
@@ -88,4 +112,28 @@ LGResizeWindowTest >> testQuarterOfDisplay [
 	
 	self assert: entry oldExtent isNil.
 	self assert: extentSet equals: 2@2.
+]
+
+{ #category : #tests }
+LGResizeWindowTest >> testTopLeft [
+	| composed |
+	composed := entry topLeft.
+	
+	self assert: composed class equals: LGCompositeEntry.
+	self assert: composed entries size equals: 2.
+	self assert: composed entries first equals: entry.
+	self assert: composed entries second class equals: LGPositionWindow.
+	self assert: composed entries second windowSelector equals: entry windowSelector.
+]
+
+{ #category : #tests }
+LGResizeWindowTest >> testTopRight [
+	| composed |
+	composed := entry topRight.
+	
+	self assert: composed class equals: LGCompositeEntry.
+	self assert: composed entries size equals: 2.
+	self assert: composed entries first equals: entry.
+	self assert: composed entries second class equals: LGPositionWindow.
+	self assert: composed entries second windowSelector equals: entry windowSelector.
 ]

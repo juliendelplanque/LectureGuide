@@ -27,12 +27,12 @@ LGResizeWindow >> basicRun [
 
 { #category : #composing }
 LGResizeWindow >> downLeft [
-	^ self +  (LGPositionWindow windowSelector: self windowSelector) downLeft
+	^ self + (LGPositionWindow windowSelector: self windowSelector) downLeft
 ]
 
 { #category : #composing }
 LGResizeWindow >> downRight [
-	^ self +  (LGPositionWindow windowSelector: self windowSelector) downRight
+	^ self + (LGPositionWindow windowSelector: self windowSelector) downRight
 ]
 
 { #category : #'symbolic extents' }
@@ -72,10 +72,10 @@ LGResizeWindow >> quarterOfDisplay [
 
 { #category : #composing }
 LGResizeWindow >> topLeft [
-	^ self +  (LGPositionWindow windowSelector: self windowSelector) topLeft
+	^ self + (LGPositionWindow windowSelector: self windowSelector) topLeft
 ]
 
 { #category : #composing }
 LGResizeWindow >> topRight [
-	^ self +  (LGPositionWindow windowSelector: self windowSelector) topRight
+	^ self + (LGPositionWindow windowSelector: self windowSelector) topRight
 ]

@@ -33,7 +33,7 @@ BaselineOfLectureGuide >> definePackages: spec [
 	spec
 		repository: 'https://github.com/juliendelplanque/LectureGuide';
 		package: 'LectureGuide';
-		package: 'LectureGuide-ScenarioBuilder' with: #('LectureGuide');
-		package: 'LectureGuide-Spec' with: #('LectureGuide');
-		package: 'LectureGuide-Tests' with: #('LectureGuide')
+		package: 'LectureGuide-ScenarioBuilder' with: [ spec requires: #('LectureGuide') ];
+		package: 'LectureGuide-Spec' with: [ spec requires: #('LectureGuide') ];
+		package: 'LectureGuide-Tests'  with: [ spec requires: #('LectureGuide') ]
 ]

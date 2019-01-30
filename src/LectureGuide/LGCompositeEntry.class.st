@@ -1,3 +1,10 @@
+"
+I am an entry made of the composition of a list of other entries.
+
+My #basicRun runs #basicRun on all the entries I have in my #entries list.
+
+My #basicRevert runs #basicRevert on all the entries I have in my #entries list reversed.
+"
 Class {
 	#name : #LGCompositeEntry,
 	#superclass : #LGEntry,

@@ -16,7 +16,9 @@ BaselineOfLectureGuide >> baseline: spec [
 
 { #category : #baselines }
 BaselineOfLectureGuide >> defineDependencies: spec [
-	
+	spec
+    	baseline: 'Mocketry'
+    	with: [ spec repository: 'github://dionisiydk/Mocketry:v4.0.x' ]
 ]
 
 { #category : #baselines }
@@ -31,9 +33,8 @@ BaselineOfLectureGuide >> defineGroups: spec [
 { #category : #baselines }
 BaselineOfLectureGuide >> definePackages: spec [
 	spec
-		repository: 'https://github.com/juliendelplanque/LectureGuide';
 		package: 'LectureGuide';
 		package: 'LectureGuide-ScenarioBuilder' with: [ spec requires: #('LectureGuide') ];
 		package: 'LectureGuide-Spec' with: [ spec requires: #('LectureGuide') ];
-		package: 'LectureGuide-Tests'  with: [ spec requires: #('LectureGuide') ]
+		package: 'LectureGuide-Tests'  with: [ spec requires: #('LectureGuide' 'Mocketry') ]
 ]

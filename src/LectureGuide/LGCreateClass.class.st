@@ -1,3 +1,10 @@
+"
+I am an entry creating a class in the system.
+
+My minimal configuration required consists in setting:
+- my #name (as a symbol)
+- my #packageName (as a symbol)
+"
 Class {
 	#name : #LGCreateClass,
 	#superclass : #LGEntry,

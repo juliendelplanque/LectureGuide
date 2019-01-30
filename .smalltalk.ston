@@ -1,0 +1,11 @@
+SmalltalkCISpec {
+    #loading : [
+        SCIMetacelloLoadSpec {
+            #baseline : 'LectureGuide',
+            #directory : 'src',
+            #platforms : [ #pharo ]
+        }
+    ]
+  }
+}
+

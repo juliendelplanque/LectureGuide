@@ -13,6 +13,29 @@ Class {
 	#category : #'LectureGuide-Entries'
 }
 
+{ #category : #'instance creation' }
+LGResizeWindow class >> fromSton: stonReader [
+	"To materialize an instance of mine, the string stored at #newExtent key is evaluated (because it might be a block closure).
+	 During the evaluation, 'self' symbol is bound to the new instance of mine in which the result of the evaluation will be stored."
+	
+	| parseMap instance |
+	parseMap := stonReader parseMap.
+	self assert: parseMap size = 1.
+	
+	instance := self new.
+	
+	^ instance
+		newExtent: (self compiler
+							bindings: { #self -> instance } asDictionary;
+							evaluate: (parseMap at: #newExtent));
+		yourself
+]
+
+{ #category : #'ston-core' }
+LGResizeWindow class >> stonAllInstVarNames [
+	^ super stonAllInstVarNames \ #(#oldExtent)
+]
+
 { #category : #running }
 LGResizeWindow >> basicRevert [
 	self window extent: oldExtent.
@@ -70,6 +93,15 @@ LGResizeWindow >> printTextualRepresentationOn: aStream [
 { #category : #'symbolic extents' }
 LGResizeWindow >> quarterOfDisplay [
 	self newExtent: [ self scenarist displayExtent / 2 ]
+]
+
+{ #category : #'ston persistence' }
+LGResizeWindow >> stonOn: stonWriter [	
+	"We serialize the object held by #newExtent inst. var. as a String.
+	 If it is a block, it must only reference 'self' as variable defined outside of it context (which will be bound to the instance of this entry created during materialization)"
+	stonWriter writeObject: self streamMap: [ :dictionary |
+		dictionary
+			at: #newExtent put: newExtent asString ]
 ]
 
 { #category : #composing }

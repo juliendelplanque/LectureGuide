@@ -13,6 +13,29 @@ Class {
 	#category : #'LectureGuide-Entries'
 }
 
+{ #category : #'instance creation' }
+LGPositionWindow class >> fromSton: stonReader [
+	"To materialize an instance of mine, the string stored at #newPosition key is evaluated (because it might be a block closure).
+	 During the evaluation, 'self' symbol is bound to the new instance of mine in which the result of the evaluation will be stored."
+	
+	| parseMap instance |
+	parseMap := stonReader parseMap.
+	self assert: parseMap size = 1.
+	
+	instance := self new.
+	
+	^ instance
+		newPosition: (self compiler
+							bindings: { #self -> instance } asDictionary;
+							evaluate: (parseMap at: #newPosition));
+		yourself
+]
+
+{ #category : #'ston-core' }
+LGPositionWindow class >> stonAllInstVarNames [
+	^ super stonAllInstVarNames \ #(#oldPosition)
+]
+
 { #category : #running }
 LGPositionWindow >> basicRevert [
 	self window position: oldPosition.
@@ -60,6 +83,15 @@ LGPositionWindow >> oldPosition [
 { #category : #printing }
 LGPositionWindow >> printTextualRepresentationOn: aStream [
 	aStream nextPutAll: 'Center window'
+]
+
+{ #category : #'ston persistence' }
+LGPositionWindow >> stonOn: stonWriter [
+	"We serialize the object held by #newPosition inst. var. as a String.
+	 If it is a block, it must only reference 'self' as variable defined outside of it context (which will be bound to the instance of this entry created during materialization)"
+	stonWriter writeObject: self streamMap: [ :dictionary |
+		dictionary
+			at: #newPosition put: newPosition asString ]
 ]
 
 { #category : #'symbolic positions' }

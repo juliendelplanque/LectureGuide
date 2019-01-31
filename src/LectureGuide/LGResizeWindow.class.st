@@ -18,16 +18,12 @@ LGResizeWindow class >> fromSton: stonReader [
 	"To materialize an instance of mine, the string stored at #newExtent key is evaluated (because it might be a block closure).
 	 During the evaluation, 'self' symbol is bound to the new instance of mine in which the result of the evaluation will be stored."
 	
-	| parseMap instance |
+	| parseMap |
 	parseMap := stonReader parseMap.
 	self assert: parseMap size = 2.
 	
-	instance := self new.
-	
-	^ instance
-		newExtent: (self compiler
-							bindings: { #self -> instance } asDictionary;
-							evaluate: (parseMap at: #newExtent));
+	^ self new
+		newExtentFromBlockString: (parseMap at: #newExtent);
 		windowSelector: (parseMap at: #windowSelector);
 		yourself
 ]
@@ -79,6 +75,15 @@ LGResizeWindow >> newExtent [
 { #category : #accessing }
 LGResizeWindow >> newExtent: anObject [
 	newExtent := anObject
+]
+
+{ #category : #'ston persistence' }
+LGResizeWindow >> newExtentFromBlockString: aString [
+	self newExtent: (self class compiler
+								class: self class;
+								receiver: self;
+								context: thisContext;
+								evaluate: aString)
 ]
 
 { #category : #accessing }

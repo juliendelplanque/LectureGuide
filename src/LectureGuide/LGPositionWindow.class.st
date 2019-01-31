@@ -18,16 +18,12 @@ LGPositionWindow class >> fromSton: stonReader [
 	"To materialize an instance of mine, the string stored at #newPosition key is evaluated (because it might be a block closure).
 	 During the evaluation, 'self' symbol is bound to the new instance of mine in which the result of the evaluation will be stored."
 	
-	| parseMap instance |
+	| parseMap |
 	parseMap := stonReader parseMap.
 	self assert: parseMap size = 2.
 	
-	instance := self new.
-	
-	^ instance
-		newPosition: (self compiler
-							bindings: { #self -> instance } asDictionary;
-							evaluate: (parseMap at: #newPosition));
+	^ self new
+		newPositionFromBlockString: (parseMap at: #newPosition);
 		windowSelector: (parseMap at: #windowSelector);
 		yourself
 ]
@@ -74,6 +70,15 @@ LGPositionWindow >> newPosition [
 { #category : #accessing }
 LGPositionWindow >> newPosition: anObject [
 	newPosition := anObject
+]
+
+{ #category : #'ston persistence' }
+LGPositionWindow >> newPositionFromBlockString: aString [
+	self newPosition: (self class compiler
+								class: self class;
+								receiver: self;
+								context: thisContext;
+								evaluate: aString)
 ]
 
 { #category : #accessing }

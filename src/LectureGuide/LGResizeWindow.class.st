@@ -20,7 +20,7 @@ LGResizeWindow class >> fromSton: stonReader [
 	
 	| parseMap instance |
 	parseMap := stonReader parseMap.
-	self assert: parseMap size = 1.
+	self assert: parseMap size = 2.
 	
 	instance := self new.
 	
@@ -28,6 +28,7 @@ LGResizeWindow class >> fromSton: stonReader [
 		newExtent: (self compiler
 							bindings: { #self -> instance } asDictionary;
 							evaluate: (parseMap at: #newExtent));
+		windowSelector: (parseMap at: #windowSelector);
 		yourself
 ]
 
@@ -101,7 +102,8 @@ LGResizeWindow >> stonOn: stonWriter [
 	 If it is a block, it must only reference 'self' as variable defined outside of it context (which will be bound to the instance of this entry created during materialization)"
 	stonWriter writeObject: self streamMap: [ :dictionary |
 		dictionary
-			at: #newExtent put: newExtent asString ]
+			at: #newExtent put: newExtent asString;
+			at: #windowSelector put: windowSelector ]
 ]
 
 { #category : #composing }

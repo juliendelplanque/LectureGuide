@@ -5,12 +5,6 @@ SmalltalkCISpec {
             #directory : 'src',
             #platforms : [ #pharo ]
         }
-    ],
-  #testing : {
-    #coverage : {
-      #packages : [ 'LectureGuide-Tests' ]
-    }
-  }
-  }
+    ]
 }
 
